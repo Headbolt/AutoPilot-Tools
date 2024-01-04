@@ -4,7 +4,7 @@
 # ABOUT THIS PROGRAM
 #
 #	AutoPilot-Cleanup.ps1
-#	https://github.com/Headbolt/AutoPilot-Tools/AutoPilot-Cleanup
+#	https://github.com/Headbolt/AutoPilot-Tools
 #
 #   This Script is designed to read a CSV of Serial Numbers and then delete their hashes from the tennant
 #
