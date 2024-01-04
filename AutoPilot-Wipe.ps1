@@ -4,7 +4,7 @@
 # ABOUT THIS PROGRAM
 #
 #	AutoPilot-Wipe.ps1
-#	https://github.com/Headbolt/AutoPilot-Tools/AutoPilot-Wipe
+#	https://github.com/Headbolt/AutoPilot-Tools
 #
 #   This Script is designed to read a CSV of Serial Numbers and then send an autopilot wipe to them
 #
