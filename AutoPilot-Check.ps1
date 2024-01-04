@@ -4,7 +4,7 @@
 # ABOUT THIS PROGRAM
 #
 #	AutoPilot-Check.ps1
-#	https://github.com/Headbolt/AutoPilot-Tools/AutoPilot-Check
+#	https://github.com/Headbolt/AutoPilot-Tools
 #
 #   This Script is designed to read a CSV of Serial Numbers and then check the tennant to see if their hashes exist in Autopilot
 #
