@@ -19,12 +19,15 @@
 #
 # HISTORY
 #
-#   Version: 1.0 - 04/01/2024
+#   Version: 1.1 - 26/04/2024
 #
 #	04/01/2024 - V1.0 - Created by Headbolt
 #				Using references adapted from 
 # 					https://www.powershellgallery.com/packages/WindowsAutoPilotIntune
 # 					https://github.com/microsoft/Intune-PowerShell-SDK
+#
+#	26/04/2024 - V1.1 - Updated by Headbolt
+#				Allows for Wiping Mac's which need a Wipe Code
 #
 ###############################################################################################################################################
 #
@@ -55,8 +58,19 @@ Write-Output "`nChecking devices in the Tennant"
 
 foreach ($serialNumber in $serialNumbers){
 
-$device = (Get-IntuneManagedDevice -filter "serialNumber eq '$serialNumber'").id
-	Write-Host 'Sending Wipe to Device with Serial Number "'$serialNumber '" with DeviceID "'$Device '"' -ForegroundColor Yellow	
-	Invoke-IntuneManagedDeviceWipeDevice -managedDeviceId $Device
-	Write-Host ''
+	$device = (Get-IntuneManagedDevice -filter "serialNumber eq '$serialNumber'").id
+	$operatingsystem = (Get-IntuneManagedDevice -filter "serialNumber eq '$serialNumber'").operatingSystem
+	#
+	if ($operatingsystem -eq 'macOS')
+	{
+		Write-Host 'Sending Wipe to Device with Serial Number "'$serialNumber '" and DeviceID "'$Device '" Unlock Code "123456"' -ForegroundColor Yellow	
+		Invoke-IntuneManagedDeviceWipeDevice -managedDeviceId $Device -macOsUnlockCode 123456
+		Write-Host ''
+	}
+	else
+	{
+		Write-Host 'Sending Wipe to Device with Serial Number "'$serialNumber '" with DeviceID "'$Device '"' -ForegroundColor Yellow	
+		Invoke-IntuneManagedDeviceWipeDevice -managedDeviceId $Device
+		Write-Host ''
+	}
 }
